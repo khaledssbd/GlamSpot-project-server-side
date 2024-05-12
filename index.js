@@ -37,11 +37,6 @@ const client = new MongoClient(uri, {
 
 // my made middlewares
 
-// const logger = async (req, res, next) => {
-//   console.log('called', req.method, req.host, req.url, req.originalUrl);
-//   next();
-// };
-
 const verifyToken = async (req, res, next) => {
   const token = req?.cookies?.token;
   if (!token) {
@@ -73,7 +68,7 @@ async function run() {
     app.post('/getJwtToken', async (req, res) => {
       const user = req.body;
       const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-        expiresIn: '6h',
+        expiresIn: '4h',
       });
       res.cookie('token', token, cookieOptions).send({ success: true });
     });
