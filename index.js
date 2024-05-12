@@ -211,18 +211,14 @@ async function run() {
       res.send(result);
     });
 
-    // update my booking
     app.patch('/update-booking/:id', async (req, res) => {
       const BookingID = req.params.id;
       const filter = { _id: new ObjectId(BookingID) };
-      // const jobData = req.body;
-      // const updateData = { $set: {...jobData} };
       const updateData = { $set: req.body };
       const result = await bookingCollection.updateOne(filter, updateData);
       res.send(result);
     });
 
-    // delete my booking
     app.delete('/delete-booking/:id', verifyToken, async (req, res) => {
       if (req.query.email !== req.user.email) {
         return res.status(403).send({ message: 'forbidden access' });
@@ -230,7 +226,7 @@ async function run() {
       const query = {
         _id: new ObjectId(req.params.id),
       };
-      // decrease booking count 1 in service collection
+
       const paiyaGesi = await bookingCollection.findOne(query);
       const updateDoc = { $inc: { totalBookings: -1 } };
       const serviceQuery = { _id: new ObjectId(paiyaGesi.serviceId) };
@@ -242,7 +238,6 @@ async function run() {
       res.send(result);
     });
 
-    // get servies-to-do from booking collection
     app.get('/services-to-do', verifyToken, async (req, res) => {
       if (req.query.email !== req.user.email) {
         return res.status(403).send({ message: 'forbidden access' });
@@ -253,7 +248,6 @@ async function run() {
       res.send(result);
     });
 
-    // update service status
     app.patch('/update-service-status/:id', verifyToken, async (req, res) => {
       if (req.query.email !== req.user.email) {
         return res.status(403).send({ message: 'forbidden access' });
