@@ -211,14 +211,18 @@ async function run() {
       res.send(result);
     });
 
+    // update my booking
     app.patch('/update-booking/:id', async (req, res) => {
       const BookingID = req.params.id;
       const filter = { _id: new ObjectId(BookingID) };
+      // const jobData = req.body;
+      // const updateData = { $set: {...jobData} };
       const updateData = { $set: req.body };
       const result = await bookingCollection.updateOne(filter, updateData);
       res.send(result);
     });
 
+    // delete my booking
     app.delete('/delete-booking/:id', verifyToken, async (req, res) => {
       if (req.query.email !== req.user.email) {
         return res.status(403).send({ message: 'forbidden access' });
@@ -226,7 +230,7 @@ async function run() {
       const query = {
         _id: new ObjectId(req.params.id),
       };
-
+      // decrease booking count 1 in service collection
       const paiyaGesi = await bookingCollection.findOne(query);
       const updateDoc = { $inc: { totalBookings: -1 } };
       const serviceQuery = { _id: new ObjectId(paiyaGesi.serviceId) };
@@ -238,6 +242,7 @@ async function run() {
       res.send(result);
     });
 
+    // get servies-to-do from booking collection
     app.get('/services-to-do', verifyToken, async (req, res) => {
       if (req.query.email !== req.user.email) {
         return res.status(403).send({ message: 'forbidden access' });
@@ -248,6 +253,7 @@ async function run() {
       res.send(result);
     });
 
+    // update service status
     app.patch('/update-service-status/:id', verifyToken, async (req, res) => {
       if (req.query.email !== req.user.email) {
         return res.status(403).send({ message: 'forbidden access' });
@@ -256,65 +262,6 @@ async function run() {
       const query = { _id: new ObjectId(ID) };
       const updateData = { $set: { serviceStatus: req.body.newStatus } };
       const result = await bookingCollection.updateOne(query, updateData);
-      res.send(result);
-    });
-
-    //------------------------------------------------------------------------------------------
-
-    // app.get('/services/:id', async (req, res) => {
-    //   const Id = req.params.id;
-    //   const query = { _id: new ObjectId(Id) };
-
-    //   const options = {
-    // Sort returned documents in ascending order by title (A->Z)
-    // sort: { title: 1 },
-
-    // Sort returned documents in ascending order by title (Z->A)
-    // sort: { title: -1 },
-
-    // (id na caile _id:0 dite hoy coz by default eta diye day...  onno ja ja cai tar por 1 dite hobe)
-    // projection: { _id: 0, title: 1, imdb: 1 },
-    //     projection: { img: 1, title: 1, price: 1 },
-    //   };
-
-    //   const result = await serviceCollection.findOne(query, options);
-    //   res.send(result);
-    // });
-
-    // bookings related API
-    app.get('/bookings', verifyToken, async (req, res) => {
-      // console.log(req.query.email);
-      // console.log('tok tok token', req?.cookies?.token);
-      if (req.query.email !== req.user.email) {
-        return res.status(403).send({ message: 'forbidden access' });
-      }
-      let query = {};
-      if (req.query?.email) {
-        query = { email: req.query.email };
-        // query.email = req.query.email
-      }
-      const result = await bookingCollection.find(query).toArray();
-      res.send(result);
-    });
-
-    app.post('/bookings', async (req, res) => {
-      const newBooking = req.body;
-      const result = await bookingCollection.insertOne(newBooking);
-      res.send(result);
-    });
-
-    app.patch('/bookings/:id', async (req, res) => {
-      const id = req.params.id;
-      const filter = { _id: new ObjectId(id) };
-      const updateData = { $set: { status: req.body.status } };
-      const result = await bookingCollection.updateOne(filter, updateData);
-      res.send(result);
-    });
-
-    app.delete('/bookings/:id', async (req, res) => {
-      const id = req.params.id;
-      const query = { _id: new ObjectId(id) };
-      const result = await bookingCollection.deleteOne(query);
       res.send(result);
     });
 
