@@ -242,6 +242,29 @@ async function run() {
       res.send(result);
     });
 
+    // get servies-to-do from booking collection
+    app.get('/services-to-do', verifyToken, async (req, res) => {
+      if (req.query.email !== req.user.email) {
+        return res.status(403).send({ message: 'forbidden access' });
+      }
+      const result = await bookingCollection
+        .find({ providerEmail: req.query.email })
+        .toArray();
+      res.send(result);
+    });
+
+    // update service status
+    app.patch('/update-service-status/:id', verifyToken, async (req, res) => {
+      if (req.query.email !== req.user.email) {
+        return res.status(403).send({ message: 'forbidden access' });
+      }
+      const ID = req.params.id;
+      const query = { _id: new ObjectId(ID) };
+      const updateData = { $set: { serviceStatus: req.body.newStatus } };
+      const result = await bookingCollection.updateOne(query, updateData);
+      res.send(result);
+    });
+
     //------------------------------------------------------------------------------------------
 
     // app.get('/services/:id', async (req, res) => {
