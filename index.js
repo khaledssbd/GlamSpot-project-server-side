@@ -7,7 +7,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 // all config
 require('dotenv').config();
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 7000;
 
 // all middleware
 const corsConfig = {
@@ -15,9 +15,9 @@ const corsConfig = {
     'http://localhost:5173',
     'http://localhost:5174',
     'https://glamspot-khaled.web.app',
-    'https://ph-a11-client-by-khaled.vercel.app',
-    'https://ph-a11-client-by-khaled.surge.sh',
-    'https://ph-a11-client-by-khaled.netlify.app',
+    'https://glamspot-by-khaled.vercel.app',
+    'https://glamspot-by-khaled.surge.sh',
+    'https://glamspot-by-khaled.netlify.app',
   ],
   credentials: true,
 };
@@ -66,6 +66,7 @@ async function run() {
     const bookingCollection = client.db('glamSpotDB').collection('bookings');
 
     // auth related API
+    // node
     // require('crypto').randomBytes(64).toString('hex')
     // gives token when user login
     app.post('/getJwtToken', async (req, res) => {
@@ -107,6 +108,8 @@ async function run() {
 
     // get my service
     app.get('/my-services', verifyToken, async (req, res) => {
+      // use req?.query?.email istead of req?.user?.email
+      // because in verifyToken there is no req.user.email
       const result = await serviceCollection
         .find({ providerEmail: req?.query?.email })
         .toArray();
@@ -242,9 +245,8 @@ async function run() {
       res.send(result);
     });
 
-
     // Send a ping to confirm a successful connection to DB
-    // await client.db('admin').command({ ping: 1 });
+    await client.db('admin').command({ ping: 1 });
     console.log(
       'Pinged your deployment. You successfully connected to MongoDB!'
     );
