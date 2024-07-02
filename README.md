@@ -57,36 +57,20 @@ Before you begin, ensure you have the following installed on your local machine:
 
 ### Installation
 
-1. **Clone the repository:**
-
-   Open your terminal and run the following command to clone the repository:
-
-   ```bash
+1. ```bash
    git clone https://github.com/khaledssbd/GlamSpot-project-server-side
    ```
 
-2. **Navigate to the project directory:**
-
-   ```bash
+2. ```bash
    cd GlamSpot-project-server-side
    ```
 
-3. **Install dependencies:**
-
-   Run the following command to install all necessary dependencies:
-
-   ```bash
+3. ```bash
    npm install
    ```
 
-4. **Start the development server:**
-
-   Once the dependencies are installed, you can start the development server
-   with:
-
-   ```bash
+4. ```bash
    npm run dev
    ```
 
-   This will run the app in development mode. Open
-   [http://localhost:7000](http://localhost:7000) to view it in the browser.
+Open [http://localhost:7000](http://localhost:7000) to view it in the browser.
