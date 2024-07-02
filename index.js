@@ -245,6 +245,65 @@ async function run() {
       res.send(result);
     });
 
+    //------------------------------------------------------------------------------------------
+
+    // app.get('/services/:id', async (req, res) => {
+    //   const Id = req.params.id;
+    //   const query = { _id: new ObjectId(Id) };
+
+    //   const options = {
+    // Sort returned documents in ascending order by title (A->Z)
+    // sort: { title: 1 },
+
+    // Sort returned documents in ascending order by title (Z->A)
+    // sort: { title: -1 },
+
+    // (id na caile _id:0 dite hoy coz by default eta diye day...  onno ja ja cai tar por 1 dite hobe)
+    // projection: { _id: 0, title: 1, imdb: 1 },
+    //     projection: { img: 1, title: 1, price: 1 },
+    //   };
+
+    //   const result = await serviceCollection.findOne(query, options);
+    //   res.send(result);
+    // });
+
+    // bookings related API
+    // app.get('/bookings', verifyToken, async (req, res) => {
+    //   // console.log(req.query.email);
+    //   // console.log('tok tok token', req?.cookies?.token);
+    //   if (req.query.email !== req.user.email) {
+    //     return res.status(403).send({ message: 'forbidden access' });
+    //   }
+    //   let query = {};
+    //   if (req.query?.email) {
+    //     query = { email: req.query.email };
+    //     // query.email = req.query.email
+    //   }
+    //   const result = await bookingCollection.find(query).toArray();
+    //   res.send(result);
+    // });
+
+    // app.post('/bookings', async (req, res) => {
+    //   const newBooking = req.body;
+    //   const result = await bookingCollection.insertOne(newBooking);
+    //   res.send(result);
+    // });
+
+    // app.patch('/bookings/:id', async (req, res) => {
+    //   const id = req.params.id;
+    //   const filter = { _id: new ObjectId(id) };
+    //   const updateData = { $set: { status: req.body.status } };
+    //   const result = await bookingCollection.updateOne(filter, updateData);
+    //   res.send(result);
+    // });
+
+    // app.delete('/bookings/:id', async (req, res) => {
+    //   const id = req.params.id;
+    //   const query = { _id: new ObjectId(id) };
+    //   const result = await bookingCollection.deleteOne(query);
+    //   res.send(result);
+    // });
+
     // Send a ping to confirm a successful connection to DB
     await client.db('admin').command({ ping: 1 });
     console.log(
