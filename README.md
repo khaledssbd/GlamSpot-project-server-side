@@ -2,10 +2,10 @@
 
 ## Live site:
 
-- Click here- [GlamSpot on firebase](https://glamspot-khaled.web.app)
-- Click here- [GlamSpot on vercel](https://glamspot-by-khaled.vercel.app)
-- Click here- [GlamSpot on surge](https://glamspot-by-khaled.surge.sh)
-- Click here- [GlamSpot on netlify](https://glamspot-by-khaled.netlify.app)
+- [GlamSpot on firebase](https://glamspot-khaled.web.app)
+- [GlamSpot on vercel](https://glamspot-by-khaled.vercel.app)
+- [GlamSpot on surge](https://glamspot-by-khaled.surge.sh)
+- [GlamSpot on netlify](https://glamspot-by-khaled.netlify.app)
 
 ## GitHub Repository:
 
@@ -25,16 +25,11 @@
 
 - Loading data in a amazing way with no bug using TanStack Query
 - axiosSecure to force logout a hacker who wants to ge others data
-- CRUD or REST(Representational State Transfer) API(Application Programming
-  Interface) support with post get put delete requests
-- Custom API and Server configuration with database
 - Awesome dark theme support
-- Toast Message and sweet-alert2 for notifications
 - react-responsive-carousel, aos Implementation for better UI
 - jspdf for pdf downlaod
 - Environment Variable configuration to save admin data from hackers
-- Regex with Valid email
-- Regex with Uppercase letters, lowercase letters and 6 characters in password
+- Regex with Valid email, Uppercase letters, lowercase letters and 6 characters in password
 - PrivateRoute to make the user login must
 - jwt configuration to configure security
 
