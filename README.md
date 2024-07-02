@@ -17,27 +17,26 @@
 
 # Project Overview:
 
-- Creative Design
-- All Device Responsive
 - Add your service to database and manage them
 - Book others service as a user
 - provide and update service status in database
+
+# Features
+
 - Loading data in a amazing way with no bug using TanStack Query
 - axiosSecure to force logout a hacker who wants to ge others data
 - CRUD or REST(Representational State Transfer) API(Application Programming
   Interface) support with post get put delete requests
 - Custom API and Server configuration with database
-- tailwind CSS
 - Awesome dark theme support
 - Toast Message and sweet-alert2 for notifications
-- Framer-motion, aos, swiper and animate.css Implementation for better UI
+- react-responsive-carousel, aos Implementation for better UI
+- jspdf for pdf downlaod
 - Environment Variable configuration to save admin data from hackers
 - Regex with Valid email
 - Regex with Uppercase letters, lowercase letters and 6 characters in password
-- Protected routes
-- Local Storage and API post configuration with Protected route
-- Adaptable & Robust
-- No lorem text and no javascript default alert
+- PrivateRoute to make the user login must
+- jwt configuration to configure security
 
 # npm Packages
 
