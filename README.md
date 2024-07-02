@@ -10,7 +10,6 @@
 ## GitHub Repository:
 
 - [Client-Repository](https://github.com/khaledssbd/GlamSpot-project-client-side)
-
 - [Server-Repository](https://github.com/khaledssbd/GlamSpot-project-server-side)
 
 ---
